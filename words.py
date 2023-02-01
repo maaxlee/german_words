@@ -2,6 +2,7 @@ import json
 from random import choice
 import argparse
 import json
+import os
 
 
 if __name__ == "__main__":
@@ -17,11 +18,14 @@ if __name__ == "__main__":
             words.update(json.load(f))
 
     while True:
+        os.system("clear")
         show = choice(list(words.keys()))
         print(f"{show}")
         res = input()
-        if res != words[show]:
-            print("\033[1;31;40m Wrong \033[0m")
+        if res.lower() != words[show].lower():
+            print("\033[1;31;40m Wrong \033[0m Correct answer is: " + words[show])
         else:
             print("\033[1;32;40m Correct \033[0m")
+        print("Any key -> next")
+        input()
 
